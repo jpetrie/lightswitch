@@ -1,0 +1,37 @@
+================================================================================
+INTRODUCTION                                                       *lightswitch*
+
+Lightswitch is a plugin that automatically adjusts the value of `background` to
+match the macOS appearance theme. It has no effect on non-macOS systems.
+
+Lightswitch polls once at startup, and then regularly in the background at a
+controllable interval. During a poll, if Lightswitch detects that the OS
+appearance theme is different from the value of `background`, it will set
+`background` accordingly.
+
+|lightswitch.setup({opts})|                                *lightswitch.setup()*
+    Lightswitch's setup function, which must be run by the user (if not using
+    a plugin manager that does so).
+
+    Usage:
+    >
+    require("lightswitch").setup({
+      -- options go here
+    })
+<
+
+    Lightswitch supports the following options:
+
+                                                  *lightswitch.options.interval*
+    interval: ~
+        Determines the time, in milliseconds, between Lightswitch's polling
+        attempts. The default value is 1000. A value of 0 or negative values
+        will cause Lightswitch to disable the periodic background poll, 
+        limiting it to just the initial startup check.
+
+                                                  *lightswitch.options.callback*
+    callback: ~
+        An optional function that Lightswitch will call after it changes the value
+        of `background`. The function takes a single parameter, which is a string
+        holding the new `background` value. The default value is nil.
+
