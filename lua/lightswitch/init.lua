@@ -37,7 +37,7 @@ function lightswitch.setup(options)
     -- Subsequent periodic checks only occur if the user has set an appropriate poll interval.
     local interval = lightswitch.options.interval
     if interval > 0 then
-      local timer = vim.loop.new_timer()
+      local timer = assert(vim.uv.new_timer(), "failed to create timer; polling disabled")
       timer:start(interval, interval, vim.schedule_wrap(function() check() end))
     end
   end
