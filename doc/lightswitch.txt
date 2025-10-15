@@ -1,0 +1,37 @@
+*lightswitch.txt*          Automatically adjusts `background` to match the system.
+==============================================================================
+INTRODUCTION                                                       *lightswitch*
+
+Lightswitch is a plugin that automatically adjusts the value of 'background'
+to match the system appearance theme. Lightswitch only functions on macOS, and
+will have no effect on other systems.
+
+Lightswitch polls once at setup time, and then regularly in the background.
+During a poll, if Lightswitch detects that the OS appearance theme does not
+match the value of 'background', it will update 'background' accordingly.
+
+------------------------------------------------------------------------------
+CONFIGURATION                                        *lightswitch-configuration*
+
+Lightswitch exposes a setup function that must be called to activate the
+plugin. Configuration options can be passed to the function; the example below
+illustrates the default values.
+>lua
+  require("lightswitch").setup({
+    -- The interval in milliseconds between polling attempts. A value of zero
+    -- prevents periodic polling, limiting Lightswitch to just the initial
+    -- startup check.
+    interval = 1000,
+  })
+<
+------------------------------------------------------------------------------
+API                                                            *lightswitch-api*
+
+lightswitch.setup({opts})                                  *lightswitch.setup()*
+    Initialize Lightswitch.
+
+    Parameters: ~
+      {opts} Configuration options.
+
+==============================================================================
+vim:tw=78:ft=help:norl:
