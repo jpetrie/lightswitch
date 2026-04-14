@@ -7,18 +7,23 @@ Lightswitch detects that the OS appearance theme is different from the value of 
 accordingly.
 
 ## Installation
-Install via your plugin manager of choice. For example, via [`lazy.nvim`](https://github.com/folke/lazy.nvim):
+Install Lightswitch using your plugin management solution of choice. Installation using Neovim 0.12's built-in plugin
+manager looks like:
 
 ```lua
-{
-  "jpetrie/lightswitch",
-  opts = {
-    -- The interval, in milliseconds, between polling attempts. 0 prevents
-    -- periodic polling, limiting Lightswitch to just the initial setup
-    -- check. The default value is 1000.
-    interval = 1000,
-  }
-}
+vim.pack.add({"https://github.com/jpetrie/lightswitch"})
+```
+
+Lightswitch must be activated by calling `setup()` (for example, in your `vimrc`). `setup()` accepts a table of options.
+Unspecified options default to the values shown below:
+
+```lua
+require("lightswitch").setup({
+  -- The interval in milliseconds between polling attempts. A value of zero
+  -- prevents periodic polling, limiting Lightswitch to just the initial
+  -- startup check.
+  interval = 1000,
+})
 ```
 
 ## Rationale
