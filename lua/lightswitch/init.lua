@@ -1,6 +1,6 @@
 local M = {
   --- @class (exact) lightswitch.Options
-  --- @field interval number The number of milliseconds between appearance checks.
+  --- @field interval? number The number of milliseconds between appearance checks.
   options = {
     interval = 1000,
   },
@@ -36,7 +36,7 @@ M.setup = function(options)
 
     -- Subsequent periodic checks only occur if the user has set an appropriate poll interval.
     local interval = M.options.interval
-    if interval > 0 then
+    if interval ~= nil and interval > 0 then
       local timer = vim.uv.new_timer()
       if timer ~= nil then
         timer:start(interval, interval, vim.schedule_wrap(check))
